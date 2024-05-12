@@ -60,18 +60,19 @@ if prompt := st.chat_input("Digite sua pergunta - Estamos aqui pra tirar suas d�
     with st.chat_message("user", avatar='👨‍💻'):
         st.markdown(prompt)
 
+    # Adicione o texto de referência como contexto no prompt
+    messages = [
+        {"role": "system", "content": f"Você é um especialista que responde apenas com base no seguinte texto: {reference_text}. Seu objetivo é explicar o que você encontra no texto e citar em qual documento achou a informação, parágrafo e etc. Seja claro nas respostas pois você deve tirar dúvidas"},
+        *[
+            {"role": m["role"], "content": m["content"]}
+            for m in st.session_state.messages
+        ]
+    ]
     # Fetch response from Groq API
     try:
         chat_completion = client.chat.completions.create(
             model=model_option,
-            messages=[
-                {"role": "system", "content": f"Você é um especialista que responde apenas com base no seguinte texto: {reference_text}. Seu objetivo é explicar o que vc encontra no texto e citar em qual documento achou a informação, parágro e etc.. Seja claro nas respostas pois vc deve tirar dúvidas"},
-                {
-                    "role": m["role"],
-                    "content": m["content"]
-                }
-                for m in st.session_state.messages
-            ],
+            messages=messages,
             max_tokens=max_tokens,
             stream=True
         )
