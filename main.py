@@ -28,8 +28,6 @@ models = {
     "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
 }
 
-models = "llama3-70b-8192"
-
 
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
@@ -41,6 +39,8 @@ with col1:
         format_func=lambda x: models[x]["name"],
         index=4  # Default to mixtral
     )
+
+model_option = "llama3-70b-8192"
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
