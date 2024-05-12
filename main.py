@@ -3,10 +3,17 @@ from typing import Generator
 from groq import Groq
 
 st.set_page_config(page_icon="💬", layout="wide",
-                   page_title="Mestrado Frederico")
+                   page_title="Mestrado Frederico - PROAP Dúvidas")
 
 
 st.subheader("Tire suas Dúvidas sobre Portaria PROAP \nAutor: Frederico Joaquim Gomes de Mello", divider="rainbow", anchor=False)
+
+# Sidebar com botão para limpar a janela de chat.
+with st.sidebar:
+    if st.button("Limpar Chat", use_container_width=True, type="primary"):
+        st.session_state.messages = []
+        st.rerun()
+
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
