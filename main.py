@@ -3,10 +3,10 @@ from typing import Generator
 from groq import Groq
 
 st.set_page_config(page_icon="💬", layout="wide",
-                   page_title="Groq Goes Brrrrrrrr...")
+                   page_title="Mestrado Frederico")
 
 
-st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
+st.subheader("Tire suas Dúvidas sobre Portaria PROAP - Autor: Frederico Joaquim Gomes de Mello", divider="rainbow", anchor=False)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
