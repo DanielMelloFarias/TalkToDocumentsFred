@@ -6,7 +6,7 @@ st.set_page_config(page_icon="💬", layout="wide",
                    page_title="Mestrado Frederico")
 
 
-st.subheader("Tire suas Dúvidas sobre Portaria PROAP - Autor: Frederico Joaquim Gomes de Mello", divider="rainbow", anchor=False)
+st.subheader("Tire suas Dúvidas sobre Portaria PROAP \nAutor: Frederico Joaquim Gomes de Mello", divider="rainbow", anchor=False)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
